@@ -18,8 +18,11 @@ class HasFilter implements FilterInterface
         } else {
             $pos = 0;
         }
-
-        if (substr($property, $pos, 3) === 'has') {
+        
+        $stringAfterHas = substr($property, $pos + 3);
+        
+        //check $property begins with 'has' and first letter after 'has' is uppercase
+        if ( (substr($property, $pos, 3) === 'has') && ($stringAfterHas === ucfirst($stringAfterHas))  ) {
             return true;
         }
         return false;
